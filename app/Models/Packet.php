@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Packet extends Model
 {
     protected $table = 'tour_packet';
+
+    protected $primaryKey = 'id_pack';
 }

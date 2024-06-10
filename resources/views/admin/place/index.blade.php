@@ -4,6 +4,9 @@
         <div>
             <a href="{{route('place.create')}}" class = "btn btn-primary">Add new</a>
         </div>
+        <div>
+            
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -11,6 +14,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Hotline</th>
                     <th scope="col">Location</th>
+                    
                     <th scope="col">Status</th>
                 </tr>
             </thead>

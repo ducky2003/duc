@@ -11,6 +11,6 @@ class RegionExport implements FromCollection
     */
     public function collection()
     {
-        return Region::all();
+        return Region::select('*')->get();
     }
 }

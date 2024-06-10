@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use App\Models\Region;
 use App\Models\Place;
+use App\Models\Packet;
+use App\Models\PackCategory;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Export\RegionExport;
@@ -32,12 +34,44 @@ class RegionController extends Controller
         $region = DB::table('region')
             ->select('region.id_region', 'region.region_name' ,'region.region_image', DB::raw('COUNT(place.id_place) AS place_count'))
             ->leftJoin('place', 'place.id_region', '=', 'region.id_region')
-            
             ->groupBy('region.id_region', 'region.region_name','region.region_image')
             ->paginate(4);
-        return view('users.home', compact('region'));
+        
+        $packet = DB::table('tour_packet')
+            ->select('tour_packet.*', 'place.place_name')
+            ->join('place', 'tour_packet.id_place', '=', 'place.id_place')
+            ->get();
+        $category = DB::table('tour_category')
+            ->select('tour_category.id_category',
+            'tour_category.category_name',
+            'tour_category.category_desc',
+            'tour_category.category_image', DB::raw('COUNT(tour_packet.id_pack) as tour_count'))
+            ->leftJoin('tour_packet', 'tour_category.id_category', '=', 'tour_packet.id_category')
+            ->groupBy('tour_category.id_category',
+            'tour_category.category_name',
+            'tour_category.category_desc',
+            'tour_category.category_image')
+            ->get();
+        return view('users.home', compact('region', 'packet','category'));
     }
-   
+    public function regionDet(){
+        $region = DB::table('region')
+        ->select('region.id_region', 'region.region_name' ,'region.region_image', DB::raw('COUNT(place.id_place) AS place_count'))
+        ->leftJoin('place', 'place.id_region', '=', 'region.id_region')
+        ->groupBy('region.id_region', 'region.region_name','region.region_image')
+        ->get();
+        return view('region', compact('region'));
+    }
+    public function showPlace($id){
+        $region = Region::findOrFail($id);
+        $place = Place::where('id_region', $id)->get();
+        return view('place', compact('region', 'place'));
+    }
+    public function showdetail($id_category){
+        $tourPackets = Packet::where('id_category', $id_category)->get();
+        $category = PackCategory::find($id_category);
+        return view('detail', compact('tourPackets', 'category'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -146,7 +180,8 @@ class RegionController extends Controller
 
     public function export() 
     {
-        $filename = "region.xlsx";
-        return Excel::download(new RegionExport, $filename);
+        // $filename = "region.xlsx";
+        // return Excel::download(new RegionExport, $filename);
+        return Excel::download(new RegionExport, 'users.xlsx');
     }
 }

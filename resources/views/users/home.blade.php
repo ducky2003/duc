@@ -11,11 +11,11 @@
                         </div>
                     </div>
                        
-                    <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
-                        <h5 class="section-about-title pe-3">About Us</h5>
-                        <h1 class="mb-4">Welcome to <span class="text-primary">{{$a->title}}</span></h1>
+                    <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/vn1.png);">
+                        <h5 class="section-about-title pe-3">Giới thiệu</h5>
+                        <h1 class="mb-4">Chào mừng bạn đến với <span class="text-primary">{{$a->title}}</span></h1>
                         <p class="mb-4">{{$a->description}}</p>                                               
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Xem thêm</a>
+                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="https://vietnam.travel/">Xem thêm</a>
                     </div>
                     @endforeach      
                 </div>
@@ -35,10 +35,10 @@
                     <div class="col-lg-6">
                         <div class="row g-4">                          
                             <div class="col-12">
-                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0">
+                                <div class="service-content-inner d-flex align-items-center bg-white border border-primary rounded p-4 pe-0" style="height:200px">
                                     <div class="service-content text-end">
-                                        <h5 class="mb-4">{{$se->service_title}}</h5>
-                                        <p class="mb-0">{{$se->service_content}}
+                                        <h5 class="mb-4 ">{{$se->service_title}}</h5>
+                                        <p class="mb-0 text-center">{{$se->service_content}}
                                         </p>
                                     </div>
                                     <div class="service-icon p-4">
@@ -103,12 +103,8 @@
                                                 <div class="destination-overlay p-4">
                                                     <a href="#" class="btn btn-primary text-white rounded-pill border py-2 px-3">{{$r->place_count}} Photos</a>
                                                     <h4 class="text-white mb-2 mt-3">{{$r->region_name}}</h4>
-                                                    <a id="load_more" href="/place" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                                    <script>
-                                                        document.getElementById('load_more').addEventListener('click', function() {
-                                                            window.location.href = "{{ route('place')}}";
-                                                        });
-                                                    </script>
+                                                    <a id="" href="{{ route('region.place', $r->id_region) }}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
+                                                   
                                                 </div>
                                                 <div class="search-icon">
                                                     <a href="{{asset($r->region_image)}}" data-lightbox="destination-7"><i class="fa fa-plus-square fa-1x btn btn-light btn-lg-square text-primary"></i></a>
@@ -295,185 +291,27 @@
         <div class="container-fluid ExploreTour py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">Explore Tour</h5>
-                    <h1 class="mb-4">The World</h1>
-                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum tempore nam, architecto doloremque velit explicabo? Voluptate sunt eveniet fuga eligendi! Expedita laudantium fugiat corrupti eum cum repellat a laborum quasi.
+                    <h5 class="section-title px-3">Khám phá</h5>
+                    <h1 class="mb-4">Danh mục</h1>
+                    <p class="mb-0">Chúng tôi gợi ý cho bạn những gói du lịch theo các gói để bạn tiện cho việc tìm kiếm
                     </p>
                 </div>
                 <div class="tab-class text-center">
-                    <ul class="nav nav-pills d-inline-flex justify-content-center mb-5">
-                        <li class="nav-item">
-                            <a class="d-flex mx-3 py-2 border border-primary bg-light rounded-pill active" data-bs-toggle="pill" href="#NationalTab-1">
-                                <span class="text-dark" style="width: 250px;">National Tour Category</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="d-flex py-2 mx-3 border border-primary bg-light rounded-pill" data-bs-toggle="pill" href="#InternationalTab-2">
-                                <span class="text-dark" style="width: 250px;">International tour Category</span>
-                            </a>
-                        </li>
-                    </ul>
                     <div class="tab-content">
-                        <div id="NationalTab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-1.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Weekend Tour</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-2.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Holiday Tour</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-3.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Road Trip</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="tour-offer bg-info">15% Off</div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-4.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Historical Trip</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-5.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Family Tour</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="tour-offer bg-warning">50% Off</div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="national-item">
-                                        <img src="img/explore-tour-6.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                        <div class="national-content">
-                                            <div class="national-info">
-                                                <h5 class="text-white text-uppercase mb-2">Beach Tour</h5>
-                                                <a href="#" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="national-plus-icon">
-                                            <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="InternationalTab-2" class="tab-pane fade show p-0">
+                        <div id="InternationalTab-2" class="tab-pane fade show p-0 active">
                             <div class="InternationalTour-carousel owl-carousel">
+                                @foreach ($category as  $key => $cate)
                                 <div class="international-item">
-                                    <img src="img/explore-tour-1.jpg" class="img-fluid w-100 rounded" alt="Image">
+                                    <img src="{{asset($cate->category_image)}}" class="img-fluid w-100 rounded" alt="Image">
                                     <div class="international-content">
                                         <div class="international-info">
-                                            <h5 class="text-white text-uppercase mb-2">Australia</h5>
-                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 8 Cities</a>
-                                            <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>143+ Tour Places</span></a>
+                                            <h5 class="text-white text-uppercase mb-2">{{$cate->category_name}}</h5>
+                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i>{{$cate->tour_count}}</a>
+                                            <a id="load_more" href="{{ route('category.detail', $cate->id_category) }}" class="btn-hover text-white">View All Place <i class="fa fa-arrow-right ms-2"></i></a>
                                         </div>
-                                    </div>
-                                    <div class="tour-offer bg-success">30% Off</div>
-                                    <div class="international-plus-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
+                                    </div>                                                   
                                 </div>
-                                <div class="international-item">
-                                    <img src="img/explore-tour-2.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                    <div class="international-content">
-                                        <div class="international-info">
-                                            <h5 class="text-white text-uppercase mb-2">Germany</h5>
-                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 12 Cities</a>
-                                            <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>21+ Tour Places</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="international-plus-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
-                                <div class="international-item">
-                                    <img src="img/explore-tour-3.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                    <div class="international-content">
-                                        <div class="tour-offer bg-warning">45% Off</div>
-                                        <div class="international-info">
-                                            <h5 class="text-white text-uppercase mb-2">Spain</h5>
-                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 9 Cities</a>
-                                            <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>133+ Tour Places</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="international-plus-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
-                                <div class="international-item">
-                                    <img src="img/explore-tour-4.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                    <div class="international-content">
-                                        <div class="international-info">
-                                            <h5 class="text-white text-uppercase mb-2">Japan</h5>
-                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 8 Cities</a>
-                                            <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>137+ Tour Places</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="international-plus-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
-                                <div class="international-item">
-                                    <img src="img/explore-tour-5.jpg" class="img-fluid w-100 rounded" alt="Image">
-                                    <div class="international-content">
-                                        <div class="tour-offer bg-info">70% Off</div>
-                                        <div class="international-info">
-                                            <h5 class="text-white text-uppercase mb-2">London</h5>
-                                            <a href="#" class="btn-hover text-white me-4"><i class="fas fa-map-marker-alt me-1"></i> 17 Cities</a>
-                                            <a href="#" class="btn-hover text-white"><i class="fa fa-eye ms-2"></i> <span>26+ Tour Places</span></a>
-                                        </div>
-                                    </div>
-                                    <div class="international-plus-icon">
-                                        <a href="#" class="my-auto"><i class="fas fa-link fa-2x text-white"></i></a>
-                                    </div>
-                                </div>
+                                @endforeach                    
                             </div>
                         </div>
                     </div>
@@ -486,14 +324,14 @@
         <div class="container-fluid packages py-5">
             <div class="container py-5">
                 <div class="mx-auto text-center mb-5" style="max-width: 900px;">
-                    <h5 class="section-title px-3">Packages</h5>
-                    <h1 class="mb-0">Awesome Packages</h1>
+                    <h5 class="section-title px-3">Gói du lịch</h5>
+                    <h1 class="mb-0">Những gói du lịch nổi bật</h1>
                 </div>
                 <div class="packages-carousel owl-carousel">
                     @foreach ($packet as $key => $pac)
                     <div class="packages-item">
                         <div class="packages-img">
-                            <img src="img/packages-4.jpg" class="img-fluid w-100 rounded-top" alt="Image">
+                            <img src="{{asset($pac->pack_img)}}" class="img-fluid w-100 rounded-top" style="height:236px" alt="Image">
                             <div class="packages-info d-flex border border-start-0 border-end-0 position-absolute" style="width: 100%; bottom: 0; left: 0; z-index: 5;">
                                 <small class="flex-fill text-center border-end py-2"><i class="fa fa-map-marker-alt me-2"></i>{{$pac->place_name}}</small>
                                 <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar-alt me-2"></i>{{$pac->pack_duration}} days</small>
@@ -501,8 +339,8 @@
                             </div>
                             <div class="packages-price py-2 px-10">{{$pac->pack_price}} VND</div>
                         </div>
-                        <div class="packages-content bg-light">
-                            <div class="p-4 pb-0">
+                        <div class="packages-content bg-light rounded-bottom" >
+                            <div class="p-4 pb-0 "style="height: 350px" >
                                 <h5 class="mb-0">{{$pac->pack_title}}</h5>
                                 <small class="text-uppercase">Hotel Deals</small>
                                 <div class="mb-3">
@@ -519,7 +357,7 @@
                                     <a href="#" class="btn-hover btn text-white py-2 px-4">Read More</a>
                                 </div>
                                 <div class="col-6 text-end px-0">
-                                    <a href="#" class="btn-hover btn text-white py-2 px-4">Book Now</a>
+                                    <a href="{{ route('order', $pac->id_pack) }}" class="btn-hover btn text-white py-2 px-4">Book Now</a>
                                 </div>
                             </div>
                         </div>
@@ -531,7 +369,7 @@
         <!-- Packages End -->
 
         <!-- Gallery Start -->
-        <div class="container-fluid gallery py-5 my-5">
+        <!-- <div class="container-fluid gallery py-5 my-5">
             <div class="mx-auto text-center mb-5" style="max-width: 900px;">
                 <h5 class="section-title px-3">Our Gallery</h5>
                 <h1 class="mb-4">Tourism & Traveling Gallery.</h1>
@@ -841,11 +679,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Gallery End -->
 
         <!-- Tour Booking Start -->
-        <div class="container-fluid booking py-5">
+        <!-- <div class="container-fluid booking py-5">
             <div class="container py-5">
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
@@ -925,7 +763,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Tour Booking End -->
         <!-- Blog Start -->
         <div class="container-fluid blog py-5">
