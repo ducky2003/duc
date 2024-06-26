@@ -21,16 +21,89 @@
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
 
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3tqxnplVx3sph5lQv4OoB4KlHLs03J8GIMp8lbvMA7n48tGWiVQQcu/E9xwDnbDjsXwA1brx2hA1GKVkuPGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-c/Bl5ZnbA1mScj8BmFUszp4RY7IjNN4NiHXNZ2sJQZ6C7L67eRfPbBNO3ihTP6Z4NQ9UOH4eH2HGtxx9XiTNFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Customized Bootstrap Stylesheet -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <style>
+            footer {
+                position: relative;
+                z-index: 1;
+                overflow: hidden;
+            }
+
+            .footer-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('img/anh1.jpg') no-repeat center center/cover;
+                filter: blur(8px);
+                opacity: 0.5; /* Adjust opacity as needed */
+                z-index: -1;
+            }
+
+            footer .container {
+                position: relative;
+                z-index: 2;
+            }
+
+            footer h5, footer p, footer ul, footer li {
+                z-index: 2;
+            }
+
+            footer .container ul {
+                padding-left: 0;
+            }
+
+            footer .container ul li {
+                list-style: none;
+                margin-bottom: 10px;
+            }
+
+            footer a {
+                color: #ffffff;
+                text-decoration: none;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            footer .container ul li i {
+                margin-right: 10px;
+                color: #ffc107; /* Optional: change icon color */
+            }
+        </style>
     </head>
 
     <body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl7/8lF6y74r8B5wx5TVn1yyIc5CQZppQ4Ff5c5fQ4FbUqH9gB8GP7DP9On7U8lw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-k9aWcb3D9DrHzh8DkSo4ovFC9hvRYg3LJtBl+BB3EUu6l2cfQXjl2z/27N/U8AFySz1nnY3eW5Chpcyew3rGtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -55,12 +128,12 @@
                     <div class="d-inline-flex align-items-center" style="height: 45px;">
                     @guest
                         @if (Route::has('login'))
-                            <a href="{{ route('login') }}"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>{{ __('Login') }}</small></a>    
+                            <a href="{{ route('login') }}"><small class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>{{ __('Đăng nhập') }}</small></a>    
                         @endif
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}"><small class="me-3 text-light"><i class="fa fa-user me-2"></i>{{ __('Register') }}</small></a>  
+                            <a href="{{ route('register') }}"><small class="me-3 text-light"><i class="fa fa-user me-2"></i>{{ __('Đăng ký') }}</small></a>  
                         @endif
-                    @else
+                        @else
                         @if(Auth::check() && Auth::user()->role == 'admin')
                             <a href="{{ route('admin_home') }}"><small class="me-3 text-light"><i class="fa fa-user-shield me-2"></i>{{ __('Admin') }}</small></a>
                         @endif
@@ -80,7 +153,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('Đăng xuất') }}
                             </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -106,12 +179,12 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">      
                         @foreach($menu as $key => $m)
-                            <a href="{{route('users.home')}}" class="nav-item nav-link">{{$m->menu_name}}</a>  
+                            <a href="{{$m->route}}" class="nav-item nav-link">{{$m->menu_name}}</a>  
                         @endforeach                                                         
                                           
                        
                     </div>
-                    <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Book Now</a>
+                    <!-- <a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Đặt trước</a> -->
                 </div>
             </nav>
 
@@ -138,28 +211,37 @@
         @yield('content')
 
         <!-- Footer Start -->
-        <div class="container-fluid footer py-5">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-md-6 col-lg-6 col-xl-3">
-                        <div class="footer-item d-flex flex-column">
-                            <h4 class="mb-4 text-white">Địa chỉ</h4>
-                            <a href=""><i class="fas fa-home me-2"></i> TP Vinh, Nghệ An</a>
-                            <a href=""><i class="fas fa-envelope me-2"></i> nguyenngocanhduc1423@gmail.com</a>
-                            <a href=""><i class="fas fa-phone me-2"></i> +332201302</a>
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-share fa-2x text-white me-2"></i>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                <a class="btn-square btn btn-primary rounded-circle mx-1" href=""><i class="fab fa-linkedin-in"></i></a>
-                            </div>
+        <footer class="bg-dark text-white pt-5 pb-4 position-relative">
+            <div class="footer-background">
+
+            </div>
+            <div class="container position-relative">
+                <div class="row">
+                    <!-- Cột trái -->
+                    <div class="col-md-6 mb-4">
+                        <h5 style="color: white">Thông tin liên hệ</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-user"></i> <strong>Họ tên:</strong> Nguyễn Ngọc Anh Đức</li>
+                            <li><i class="fas fa-envelope"></i> <strong>Email:</strong> nguyenngocanhduc1423@gmail.com</li>
+                            <li><i class="fas fa-phone"></i> <strong>Điện thoại:</strong> +84332201302</li>
+                            <li><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> Nghệ An, Việt Nam</li>
+                        </ul>
+                    </div>
+                    <!-- Cột phải -->
+                    <div class="col-md-6 text-center mb-4">
+                        <div class="mb-3">
+                            <img src="{{ asset('img/logo.png') }}" alt="Đại học Vinh" style="max-width: 150px;">
                         </div>
+                        <h1 style="font-size:30px; color:white">Đại học Vinh</h1>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ: </strong>182 Lê Duẩn, Tp Vinh, Nghệ An</li>
+
+                        <p>CNTT-2024</p>
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
         <!-- Footer End -->
+        
         
         
 

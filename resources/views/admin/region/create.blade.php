@@ -21,7 +21,7 @@
         <select class="form-select" id="isActive" name="isActive" required>
         <option selected disabled value="">Choose...</option>
         <option value="1">1</option>
-        <option value="2">0</option>
+        <option value="0">0</option>
         </select>
     </div>
     <div class="mb-3">
