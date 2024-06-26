@@ -24,16 +24,19 @@
         <option selected disabled value="">Choose...</option>
         @if($category->isActive === 1)
             <option value="1"selected >Hoạt dộng</option>
-            <option value="2">Tạm khóa</option>
+            <option value="0">Tạm khóa</option>
         @else
             <option value="1" >Hoạt động</option>
-            <option value="2"selected>Tạm khóa</option>
+            <option value="0"selected>Tạm khóa</option>
         @endif
         </select>
     </div>
     <div class="mb-3">
         <label for="category_image" class="form-label">Upload file</label>
-        <input type="file" class="form-control" id="file" name="category_image"value="{{"$category->category_name"}}" required>
+        <input type="file" class="form-control" id="file" name="category_image">
+        @if ($category->category_image)
+                <img src="{{ asset($category->category_image) }}" alt="{{ $category->category_name }}" class="img-fluid mt-2" style="max-width: 150px;">
+        @endif
     </div>
     <div class="col-12">
         <button class="btn btn-primary" type="submit">Save</button>

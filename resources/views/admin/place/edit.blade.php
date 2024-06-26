@@ -43,17 +43,20 @@
         <option selected disabled value="">Choose...</option>
         @if($place->isActive === 1)
             <option value="1"selected >Hoạt dộng</option>
-            <option value="2">Tạm khóa</option>
+            <option value="0">Tạm khóa</option>
         @else
             <option value="1" >Hoạt động</option>
-            <option value="2"selected>Tạm khóa</option>
+            <option value="0"selected>Tạm khóa</option>
         @endif
 
         </select>
     </div>
     <div class="mb-3">
-        <label>Upload image</label>
+        <label for="place_img" class="form-label">Upload image</label>
         <input type="file" class="form-control" id="file" name="place_img" required>
+        @if ($place->place_img)
+            <img src="{{ asset($place->place_img) }}" alt="{{ $place->place_name }}" class="img-fluid mt-2" style="max-width: 150px;">
+        @endif
     </div>
     <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Desc</label>

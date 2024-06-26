@@ -6,6 +6,9 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/jquery-3.7.1.js">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/js/dataTables.js">
@@ -20,6 +23,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             
@@ -42,6 +47,21 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{strpos(url()->current(), 'category') == true ? 'active' : ''}}" href="{{route('category.index')}}">Category</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{strpos(url()->current(), 'post') == true ? 'active' : ''}}" href="{{route('post.index')}}">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{strpos(url()->current(), 'supplier') == true ? 'active' : ''}}" href="{{route('supplier.index')}}">Supplier</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{strpos(url()->current(), 'order') == true ? 'active' : ''}}" href="{{route('order.index')}}">Pre-Order</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{strpos(url()->current(), 'menu') == true ? 'active' : ''}}" href="{{route('menu.index')}}">Menu</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{strpos(url()->current(), 'pack') == true ? 'active' : ''}}" href="{{route('pack.index')}}">Packet</a>
             </li>
             </ul>
             <ul class="navbar-nav ms-auto">

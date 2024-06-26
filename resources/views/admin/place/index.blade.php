@@ -12,9 +12,9 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Hotline</th>
                     <th scope="col">Location</th>
-                    
                     <th scope="col">Status</th>
                 </tr>
             </thead>
@@ -23,6 +23,9 @@
                 <tr>
                  <th scope="row">{{$key + 1}}</th>
                 <td>{{$p->place_name}}</td>
+                <td>
+                    <img src="{{asset($p->place_img)}}" width="100" height="100" alt="Img">
+                </td>
                 <td>{{$p->hotline}}</td>
                 <td>{{$p->location}}</td>
                 <td>
